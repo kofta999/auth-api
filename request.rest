@@ -1,0 +1,31 @@
+POST http://localhost:4000/signup
+Content-Type: application/json
+
+{
+    "username": "kofta",
+    "email": "mostafaxxx5552@gmail.com",
+    "password": "kokoko555"
+}
+
+###
+GET http://localhost:4000/all
+
+###
+GET http://localhost:4000/alltokens
+
+###
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "email": "mostafaxxx555@gmail.com",
+    "password": "kokoko555"
+}
+
+###
+POST http://localhost:4000/refresh-token
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiJ9.NjRiOTIxNGExNmNiYTNlNGYwMjU5NDI1.Vb0qrdhKkniziTulmcsYj-13ZelZcF79DZ88PgHOdGo"
+}
