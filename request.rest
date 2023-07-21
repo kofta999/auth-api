@@ -18,7 +18,7 @@ POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-    "email": "mostafaxxx555@gmail.com",
+    "email": "mostafaxxx5552@gmail.com",
     "password": "kokoko555"
 }
 
@@ -27,5 +27,13 @@ POST http://localhost:4000/refresh-token
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiJ9.NjRiOTIxNGExNmNiYTNlNGYwMjU5NDI1.Vb0qrdhKkniziTulmcsYj-13ZelZcF79DZ88PgHOdGo"
+  "refreshToken": "eyJhbGciOiJIUzI1NiJ9.NjRiYTk0MzIwMWYxNmNkZmIwZTdhOGJi.KKj3kXLw6jGQnTCm4kDXZ5M8VB12NS0aE2mHewPYxfw"
+}
+
+###
+DELETE http://localhost:4000/logout
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiJ9.NjRiYTk0MzIwMWYxNmNkZmIwZTdhOGJi.KKj3kXLw6jGQnTCm4kDXZ5M8VB12NS0aE2mHewPYxfw"
 }

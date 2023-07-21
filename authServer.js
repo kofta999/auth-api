@@ -41,7 +41,7 @@ app.post('/login', loginUser, async (req, res) => {
     res.status(200).json({
       message: 'successfully logged in, save your refreshToken somewhere secure',
       accessToken,
-      refreshToken
+      refreshToken: refreshToken.token
     })
   } catch {
     if (RefreshToken.findOne({ token: refreshToken })) {
@@ -55,10 +55,10 @@ app.post('/login', loginUser, async (req, res) => {
   }
 })
 
-app.post('/refresh-token', (req, res) => {
+app.post('/refresh-token', async (req, res) => {
   const refreshToken = req.body.refreshToken
   if (refreshToken == null) res.sendStatus(401)
-  if (!RefreshToken.findOne({ token: refreshToken })) return res.sendStatus(403)
+  if (!await RefreshToken.findOne({ token: refreshToken })) return res.sendStatus(403)
   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
     if (err) return res.sendStatus(403)
     const accessToken = generateAccessToken({ userId: user.userId })
@@ -66,8 +66,10 @@ app.post('/refresh-token', (req, res) => {
   })
 })
 
-app.delete('/logout', (req, res) => {
-  RefreshToken.deleteOne()
+app.delete('/logout', async (req, res) => {
+  const refreshToken = req.body.refreshToken
+  const token = await RefreshToken.findOneAndDelete({ token: refreshToken })
+  if (!token) return res.sendStatus(401)
   res.sendStatus(204)
 })
 
